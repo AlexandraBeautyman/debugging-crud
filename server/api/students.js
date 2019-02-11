@@ -8,7 +8,8 @@ router.get("/", async (req, res, next) => {
       res.json(students);
     }
     const error = new Error("Something went wrong GETing the students.");
-    throw error;
+    error.status = 404
+    next(error)
   } catch (error) {
     next(error);
   }
@@ -27,7 +28,8 @@ router.get("/:studentId", async (req, res, next) => {
       res.json(singleStudent);
     }
     const error = new Error("Something went wrong GETing a single student");
-    throw error;
+    error.status = 404
+    next(error)
   } catch (error) {
     next(error);
   }

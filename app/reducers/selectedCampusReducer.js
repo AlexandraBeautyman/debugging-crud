@@ -17,10 +17,10 @@ export const fetchSingleCampusDataFromServer = (id) => async (dispatch) => {
 }
 
 //Reducer
-const selectedCampusReducer = (state = {}, action) => {
+const selectedCampusReducer = (state = {students: []}, action) => {
     switch (action.type) {
         case GOT_SINGLE_CAMPUS_DATA: {
-            return ({...action.selectedCampus})
+            return ({...state, ...action.selectedCampus})
         }
         default: return state
     }

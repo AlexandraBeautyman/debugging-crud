@@ -8,7 +8,8 @@ router.get("/", async (req, res, next) => {
       res.json(campuses);
     }
     const error = new Error("Something went wrong GETing the campuses.");
-    throw error;
+    error.status = 404
+    next(error)
   } catch (error) {
     next(error);
   }
@@ -27,7 +28,8 @@ router.get("/:campusId", async (req, res, next) => {
       res.json(singleCampus);
     }
     const error = new Error("Something went wrong GETing a single campus");
-    throw error;
+    error.status = 404
+    next(error)
   } catch (error) {
     next(error);
   }

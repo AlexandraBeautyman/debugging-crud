@@ -1,22 +1,33 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchSingleCampusDataFromServer } from "../reducers/selectedCampusReducer";
+import CreateCampus from "./CreateCampus";
+import CreateStudent from "./CreateStudent";
 
 class SingleCampus extends React.Component {
-  componentDidMount() {
+
+  async componentDidMount() {
     const id = this.props.match.params.campusId;
-    this.props.fetchSingleCampus(id);
+    await this.props.fetchSingleCampus(id);
   }
 
   render() {
-    console.log(this.props);
-    return <h1>Hi!!!!!!!!!</h1>;
+      const students = this.props.selectedCampus.students
+      console.log(students, Array.isArray(students))
+    return (
+      <div>
+        <CreateCampus campus={this.props.selectedCampus} />
+        <h1>Students</h1>
+        <div className="students">
+        {students.map((student) => <CreateStudent  key={student.id} student={student} />)}
+        </div>
+      </div>
+    );
   }
 }
 
 const mapStateToProps = state => ({
-  campus: state.selectedCampus, 
-  students: state.selectedCampus.students
+  selectedCampus: state.selectedCampus
 });
 
 const mapDispatchToProps = dispatch => ({

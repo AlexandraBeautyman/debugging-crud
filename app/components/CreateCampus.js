@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from 'react-router-dom'
 
 const CreateCampus = (props) => {
-  console.log(props);
   const {campus} = props
   return (
     <div className="campus" key={campus.key}>
