@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import SingleCampus from "./SingleCampus";
+import CreateCampus from "./CreateCampus";
 import { fetchCampusDataFromServer } from "../reducers/campusReducer";
 
 class AllCampuses extends React.Component {
@@ -13,7 +13,7 @@ class AllCampuses extends React.Component {
     return (
       <div className="campuses">
         {campuses.map(campus => {
-          return <SingleCampus key={campus.id} campus={campus} />;
+          return <CreateCampus key={campus.id} campus={campus} />;
         })}
       </div>
     );

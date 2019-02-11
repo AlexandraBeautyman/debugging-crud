@@ -4,7 +4,7 @@ import Axios from 'axios'
 const GOT_CAMPUS_DATA = 'GOT_CAMPUS_DATA'
 
 //Action creators
-export const gotCampusData = (campusData) => ({
+const gotCampusData = (campusData) => ({
     type: GOT_CAMPUS_DATA,
     campuses: campusData
 })

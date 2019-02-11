@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SingleStudent = (props) => {
+const CreateStudent = (props) => {
     const { student } = props
     return (
         <div key={student.id} className="student">
@@ -12,4 +12,4 @@ const SingleStudent = (props) => {
     )
 }
 
-export default SingleStudent
+export default CreateStudent
