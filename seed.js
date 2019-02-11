@@ -3,7 +3,7 @@ const {green, red} = require('chalk')
 const hipsum = require('lorem-hipsum')
 
 const loremHipsum = () => hipsum({
-  count: 3,
+  count: 1,
   units: 'paragraphs',
   paragraphLowerBound: 3,
   paragraphUpperBound: 15,

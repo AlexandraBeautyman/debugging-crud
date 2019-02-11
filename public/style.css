@@ -25,9 +25,42 @@ nav {
   padding: 10px;
 }
 
+nav a {
+  color: coral;
+  margin: 2%;
+}
+
 main {
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.campuses {
+  display: flex;
+  flex-direction: column;
+}
+
+.campus {
+  flex: 1;
+  display: flex;
+  margin: 2em;
+  padding: 5px;
+  background-color: lightblue;
+  justify-content: flex-start;
+  max-width: 75%;
+}
+
+.campus-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 2em;
+}
+
+.campus-image {
+  flex: 1;
+  height: 25%;
+  width: 25%;
 }
