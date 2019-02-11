@@ -1,7 +1,7 @@
 import Axios from 'axios'
 
 //Action names
-export const GOT_CAMPUS_DATA = 'GOT_CAMPUS_DATA'
+const GOT_CAMPUS_DATA = 'GOT_CAMPUS_DATA'
 
 //Action creators
 export const gotCampusData = (campusData) => ({
