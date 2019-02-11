@@ -19,7 +19,7 @@ export const fetchStudentsFromServer = () => async (dispatch) => {
 const studentReducer = (state = [], action) => {
     switch(action.type) {
         case GOT_STUDENTS_DATA: {
-            return [...action.studentsData]
+            return ([...action.students])
         }
         default: return state
     }

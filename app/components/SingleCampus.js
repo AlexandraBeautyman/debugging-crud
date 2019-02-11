@@ -7,7 +7,8 @@ const SingleCampus = (props) => {
     <div className="campus" key={campus.key}>
       <img className="campus-image" src={campus.imageUrl} />
       <div className="campus-info">
-        <h3>{campus.name}</h3>"{campus.description}"
+        <h3>{campus.name}</h3>
+        <p>"{campus.description}"</p>
       </div>
     </div>
   );

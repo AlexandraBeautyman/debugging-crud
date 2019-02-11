@@ -13,12 +13,7 @@ class AllCampuses extends React.Component {
     return (
       <div className="campuses">
         {campuses.map(campus => {
-          return (
-            <SingleCampus
-              key={campus.id}
-              campus={campus}
-            />
-          );
+          return <SingleCampus key={campus.id} campus={campus} />;
         })}
       </div>
     );
