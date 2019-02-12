@@ -3,6 +3,7 @@ import Axios from 'axios'
 //Action names
 const GOT_CAMPUS_DATA = 'GOT_CAMPUS_DATA'
 const GOT_NEW_CAMPUS = 'GOT_NEW_CAMPUS'
+const DELETE_CAMPUS = 'DELETE_CAMPUS'
 
 //Action creators
 const gotCampusData = (campusData) => ({
@@ -13,6 +14,12 @@ const gotCampusData = (campusData) => ({
 const GotNewCampus = (newCampus) => ({
     type: GOT_NEW_CAMPUS,
     newCampus
+})
+
+const deleteCampus = (result, id) => ({
+    type: DELETE_CAMPUS,
+    result,
+    id
 })
 
 //Thunk creators
@@ -28,6 +35,11 @@ export const postNewCampus = (campusData) => async (dispatch) => {
     dispatch(GotNewCampus(newCampus))
 }
 
+export const deleteCampusFromDatabase = (id) => async (dispatch) => {
+    const { data } = await Axios.delete(`/api/campuses/${id}`)
+    dispatch(deleteCampus(data, id))
+}
+
 //Reducer
 const campusReducer = (state = [], action) => {
     switch (action.type) {
@@ -36,6 +48,14 @@ const campusReducer = (state = [], action) => {
         }
         case GOT_NEW_CAMPUS: {
             return ([...state, action.newCampus])
+        }
+        case DELETE_CAMPUS: {
+            if (action.result) {
+                const newArr = [...state].filter( (campus) => {
+                    return (campus.id !== action.id)
+                })
+                return ([...newArr])
+            }
         }
         default: return state
     }

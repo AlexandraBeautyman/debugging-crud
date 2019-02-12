@@ -2,7 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import CreateCampus from "./CreateCampus";
 import AddCampus from "./AddCampus";
-import { fetchCampusDataFromServer } from "../reducers/campusReducer";
+import {
+  fetchCampusDataFromServer,
+  deleteCampusFromDatabase
+} from "../reducers/campusReducer";
 
 class AllCampuses extends React.Component {
   componentDidMount() {
@@ -19,7 +22,14 @@ class AllCampuses extends React.Component {
         </div>
         <div className="campuses">
           {campuses.map(campus => {
-            return <CreateCampus key={campus.id} view="list" campus={campus} />;
+            return (
+              <CreateCampus
+                key={campus.id}
+                view="list"
+                campus={campus}
+                remove={this.props.deleteCampus}
+              />
+            );
           })}
         </div>
       </div>
@@ -34,6 +44,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchCampuses: () => {
     dispatch(fetchCampusDataFromServer());
+  },
+  deleteCampus: id => {
+    dispatch(deleteCampusFromDatabase(id));
   }
 });
 

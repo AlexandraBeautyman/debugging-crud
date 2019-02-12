@@ -50,10 +50,10 @@ router.delete("/:campusId", async (req, res, next) => {
         id: id
       }
     }))
-    if (!deleted) res.json({text: "Sorry, there's no campus with that ID in the system"})
-    res.json({text: "Campus has been deleted"})
+    if (!deleted) res.json(false)
+    res.json(true)
   }
-  catch(err){
+  catch (err){
     next(err)
   }
 })

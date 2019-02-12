@@ -2,14 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const CreateCampus = props => {
-  const { campus, view } = props;
+  const { campus, view, remove } = props;
   return (
     <div>
       {view === "list" && (
         <div className="campus" key={campus.key}>
           <img className="campus-image" src={campus.imageUrl} />
           <div className="campus-info">
-          <button className="delete-button" type="button" onClick={() => {console.log("hi!")}}>X</button>
+          <button className="delete-button" type="button" onClick={() => remove(campus.id)}>X</button>
             <Link to={`/campuses/${campus.id}`}>
               <h3>{campus.name}</h3>
             </Link>
