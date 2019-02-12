@@ -42,4 +42,20 @@ router.post("/", async (req, res, next) => {
   }
 })
 
+router.delete("/:campusId", async (req, res, next) => {
+  try{
+    const id = req.params.campusId
+    const deleted = await (Campus.destroy({
+      where: {
+        id: id
+      }
+    }))
+    if (!deleted) res.json({text: "Sorry, there's no campus with that ID in the system"})
+    res.json({text: "Campus has been deleted"})
+  }
+  catch(err){
+    next(err)
+  }
+})
+
 module.exports = router;

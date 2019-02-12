@@ -4,6 +4,7 @@ import Axios from 'axios'
 const GOT_STUDENTS_DATA = 'GOT_STUDENTS_DATA'
 const GOT_SINGLE_STUDENT = 'GOT_SINGLE_STUDENT'
 const GOT_NEW_STUDENT = 'GOT_NEW_STUDENT'
+const DELETE_STUDENT = 'DELETE_STUDENT'
 
 //Action creators
 const gotStudentsData = (studentsData) => ({
@@ -19,6 +20,11 @@ const gotSingleStudent = (student) => ({
 const gotNewStudent = (newStudent) => ({
     type: GOT_NEW_STUDENT,
     newStudent
+})
+
+const deleteStudent = (text) => ({
+    type: DELETE_STUDENT,
+    text
 })
 
 //Thunk creators
@@ -37,6 +43,12 @@ export const postNewStudent = (newStudent) => async (dispatch) => {
     dispatch(gotNewStudent(data))
 }
 
+export const deleteStudentFromDatabase = (id) => async (dispatch) => {
+    const { data } = await Axios.delete(`/api/students/${id}`)
+    dispatch(deleteStudent(data))
+}
+
+//sub-reducer
 const studentReducer = (state = { allStudents: [], singleStudent: {} }, action) => {
     switch (action.type) {
         case GOT_STUDENTS_DATA: {
@@ -47,6 +59,11 @@ const studentReducer = (state = { allStudents: [], singleStudent: {} }, action) 
         }
         case GOT_NEW_STUDENT: {
             return ({...state, allStudents: [...state.allStudents, action.newStudent]})
+        }
+        case DELETE_STUDENT: {
+            const updatedStudents = [...state.allStudents].filter( (student) => {
+                return (student.id === )
+            })
         }
         default: return state
     }

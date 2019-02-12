@@ -9,6 +9,7 @@ const CreateCampus = props => {
         <div className="campus" key={campus.key}>
           <img className="campus-image" src={campus.imageUrl} />
           <div className="campus-info">
+          <button className="delete-button" type="button" onClick={() => {console.log("hi!")}}>X</button>
             <Link to={`/campuses/${campus.id}`}>
               <h3>{campus.name}</h3>
             </Link>
