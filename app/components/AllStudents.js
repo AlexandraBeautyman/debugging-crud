@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import CreateStudent from "./CreateStudent";
+import AddStudent from './AddStudent'
 import { fetchStudentsFromServer } from "../reducers/studentReducer";
 
 class AllStudents extends React.Component {
@@ -9,10 +10,10 @@ class AllStudents extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     const students = this.props.students;
     return (
       <div className="student-container">
+        <AddStudent />
         <h1>All Students</h1>
         <div className="students">
           {students.map(student => {

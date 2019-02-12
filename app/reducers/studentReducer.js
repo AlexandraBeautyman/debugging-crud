@@ -3,6 +3,7 @@ import Axios from 'axios'
 //Action names
 const GOT_STUDENTS_DATA = 'GOT_STUDENTS_DATA'
 const GOT_SINGLE_STUDENT = 'GOT_SINGLE_STUDENT'
+const GOT_NEW_STUDENT = 'GOT_NEW_STUDENT'
 
 //Action creators
 const gotStudentsData = (studentsData) => ({
@@ -15,17 +16,25 @@ const gotSingleStudent = (student) => ({
     student
 })
 
+const gotNewStudent = (newStudent) => ({
+    type: GOT_NEW_STUDENT,
+    newStudent
+})
+
 //Thunk creators
 export const fetchStudentsFromServer = () => async (dispatch) => {
-    const response = await Axios.get('/api/students')
-    const studentsData = response.data
-    dispatch(gotStudentsData(studentsData))
+    const { data } = await Axios.get('/api/students')
+    dispatch(gotStudentsData(data))
 }
 
 export const fetchSingleStudentFromServer = (id) => async (dispatch) => {
-    const response = await Axios.get(`/api/students/${id}`)
-    const studentData = response.data
-    dispatch(gotSingleStudent(studentData))
+    const { data } = await Axios.get(`/api/students/${id}`)
+    dispatch(gotSingleStudent(data))
+}
+
+export const postNewStudent = (newStudent) => async (dispatch) => {
+    const { data } = await Axios.post('/api/students', newStudent)
+    dispatch(gotNewStudent(data))
 }
 
 const studentReducer = (state = { allStudents: [], singleStudent: {} }, action) => {
@@ -35,6 +44,9 @@ const studentReducer = (state = { allStudents: [], singleStudent: {} }, action) 
         }
         case GOT_SINGLE_STUDENT: {
             return ({...state, singleStudent: {...action.student}})
+        }
+        case GOT_NEW_STUDENT: {
+            return ({...state, allStudents: [...state.allStudents, action.newStudent]})
         }
         default: return state
     }

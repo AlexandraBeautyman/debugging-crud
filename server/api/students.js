@@ -34,12 +34,18 @@ router.get("/:studentId", async (req, res, next) => {
   }
 });
 
-router.post('/', async (req, res, next) => {
-  try {const newStudent = await Student.create(req.body)
-  res.json(newStudent)}
-  catch (err){
-    next(err)
+router.post("/", async (req, res, next) => {
+  try {
+    const newStudent = await Student.create(req.body);
+    if (!newStudent) {
+      const error = new Error("Something went wrong creating a new student");
+      error.status = 404;
+      throw error;
+    }
+    res.json(newStudent);
+  } catch (err) {
+    next(err);
   }
-})
+});
 
 module.exports = router;

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchSingleCampusDataFromServer } from "../reducers/selectedCampusReducer";
+import { fetchSingleCampusDataFromServer} from "../reducers/selectedCampusReducer";
 import CreateCampus from "./CreateCampus";
 import CreateStudent from "./CreateStudent";
 

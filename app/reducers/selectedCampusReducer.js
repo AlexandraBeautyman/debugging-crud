@@ -9,6 +9,10 @@ const gotSingleCampusData = (selectedCampus) => ({
     selectedCampus
 })
 
+export const unmountSingleCampus = () => ({
+    type: UNMOUNT_SINGLE_CAMPUS
+})
+
 //Thunk creators
 export const fetchSingleCampusDataFromServer = (id) => async (dispatch) => {
     const response = await Axios.get(`/api/campuses/${id}`)
