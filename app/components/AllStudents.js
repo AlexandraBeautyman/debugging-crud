@@ -9,13 +9,14 @@ class AllStudents extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     const students = this.props.students;
     return (
-      <div>
+      <div className="student-container">
         <h1>All Students</h1>
         <div className="students">
           {students.map(student => {
-            return <CreateStudent key={student.id} student={student} />;
+            return <CreateStudent key={student.id} view="list" student={student} />;
           })}
         </div>
       </div>
@@ -24,7 +25,7 @@ class AllStudents extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  students: state.students
+  students: state.students.allStudents
 });
 
 const mapDispatchToProps = dispatch => ({

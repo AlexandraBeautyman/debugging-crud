@@ -5,22 +5,35 @@ import CreateCampus from "./CreateCampus";
 import CreateStudent from "./CreateStudent";
 
 class SingleCampus extends React.Component {
-
-  async componentDidMount() {
+  componentDidMount() {
     const id = this.props.match.params.campusId;
-    await this.props.fetchSingleCampus(id);
+    this.props.fetchSingleCampus(id);
   }
 
   render() {
-      const students = this.props.selectedCampus.students
-      console.log(students, Array.isArray(students))
+    const campus = this.props.selectedCampus;
+    const students = this.props.selectedCampus.students;
     return (
       <div>
-        <CreateCampus campus={this.props.selectedCampus} />
-        <h1>Students</h1>
-        <div className="students">
-        {students.map((student) => <CreateStudent  key={student.id} student={student} />)}
-        </div>
+        {campus && (
+          <div>
+            <CreateCampus view="full" campus={this.props.selectedCampus} />
+            <div className="student-container">
+              <h1>Students</h1>
+              <div className="students">
+                {students.length ? (students.map(student => (
+                  <CreateStudent
+                    key={student.id}
+                    view="list"
+                    student={student}
+                  />
+                )))
+              : (<h3>No students attending this campus</h3>)
+              }
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }

@@ -7,9 +7,6 @@ router.get("/", async (req, res, next) => {
     if (students) {
       res.json(students);
     }
-    const error = new Error("Something went wrong GETing the students.");
-    error.status = 404
-    next(error)
   } catch (error) {
     next(error);
   }
@@ -24,12 +21,14 @@ router.get("/:studentId", async (req, res, next) => {
       },
       include: [{ model: Campus }]
     });
-    if (singleStudent) {
-      res.json(singleStudent);
+
+    if (!singleStudent) {
+      const error = new Error("Something went wrong GETing a single student");
+      error.status = 404;
+      throw error;
     }
-    const error = new Error("Something went wrong GETing a single student");
-    error.status = 404
-    next(error)
+
+    res.json(singleStudent);
   } catch (error) {
     next(error);
   }

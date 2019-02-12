@@ -10,7 +10,7 @@
 
 body {
   background: linear-gradient(#ffffff, #c0c0c0);
-  height: 100vh;
+  height: 100%;
   padding: 0;
   margin: 0;
   width: 100vw;
@@ -35,6 +35,10 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+h1 {
+  padding: 0% 0% 0% 2%;
 }
 
 /* Campuses */
@@ -67,6 +71,12 @@ main {
 }
 
 /* Students */
+.student-container {
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-start;
+}
+
 .students {
   display: flex;
   flex-wrap: wrap;

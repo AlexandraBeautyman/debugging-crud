@@ -44,6 +44,13 @@ const seed = async () => {
     description: loremHipsum()
   })
 
+  const hogsmeade = await Campus.create({
+    name: "Hogsmeade Community College",
+    imageUrl: 'wmcampus.jpg',
+    address: "420 Down the pub Rd, Hogsmeade, UK",
+    description: loremHipsum()
+  })
+
   await Student.create({
     firstName: "Justin",
     lastName: "Finch-Fletchley",
@@ -114,6 +121,22 @@ const seed = async () => {
     imageUrl: "female-college-student.jpg",
     gpa: 3.9,
     campusId: griffindor.id
+  })
+
+  await Student.create({
+    firstName: "Filch",
+    lastName: "noLastName",
+    email: "sad@blammo.com",
+    imageUrl: "college-student.jpg",
+    gpa: 1.9
+  })
+
+  await Student.create({
+    firstName: "DarkLord",
+    lastName: "Voldemort",
+    email: "reelbadguy@ska.net",
+    imageUrl: "college-student.jpg",
+    gpa: 4.0
   })
 
 
