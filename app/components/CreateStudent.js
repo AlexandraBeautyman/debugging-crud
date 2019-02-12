@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const CreateStudent = props => {
-  const { student, view } = props;
+  const { student, view, remove } = props;
   const campus = student.campus
   //view: list = thumbnails, full = full bio/gpa, etc.
 
@@ -15,6 +15,7 @@ const CreateStudent = props => {
             <Link to={`/students/${student.id}`}>
               {student.firstName} {student.lastName}
             </Link>
+            <button className="delete-button" type="button" onClick={() => remove(student.id)}>X</button>
           </div>
         </div>
       )}

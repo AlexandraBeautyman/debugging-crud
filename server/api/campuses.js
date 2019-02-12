@@ -16,9 +16,7 @@ router.get("/:campusId", async (req, res, next) => {
   try {
     const id = req.params.campusId;
     const singleCampus = await Campus.findOne({
-      where: {
-        id: id
-      },
+      where: { id: id },
       include: [{ model: Student }]
     });
     if (!singleCampus) {
@@ -34,28 +32,22 @@ router.get("/:campusId", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    const newCampus = await Campus.create(req.body)
-  res.json(newCampus)
-}
-  catch (err){
-    next(err)
+    const newCampus = await Campus.create(req.body);
+    res.json(newCampus);
+  } catch (err) {
+    next(err);
   }
-})
+});
 
 router.delete("/:campusId", async (req, res, next) => {
-  try{
-    const id = req.params.campusId
-    const deleted = await (Campus.destroy({
-      where: {
-        id: id
-      }
-    }))
-    if (!deleted) res.json(false)
-    res.json(true)
+  try {
+    const id = req.params.campusId;
+    const deleted = await Campus.destroy({ where: { id: id } });
+    if (!deleted) res.json(false);
+    res.json(true);
+  } catch (err) {
+    next(err);
   }
-  catch (err){
-    next(err)
-  }
-})
+});
 
 module.exports = router;

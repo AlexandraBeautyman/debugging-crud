@@ -11,7 +11,7 @@ const gotCampusData = (campusData) => ({
     campuses: campusData
 })
 
-const GotNewCampus = (newCampus) => ({
+const gotNewCampus = (newCampus) => ({
     type: GOT_NEW_CAMPUS,
     newCampus
 })
@@ -32,7 +32,7 @@ export const fetchCampusDataFromServer = () => async (dispatch) => {
 export const postNewCampus = (campusData) => async (dispatch) => {
     const response = await Axios.post('/api/campuses', campusData)
     const newCampus = response.data
-    dispatch(GotNewCampus(newCampus))
+    dispatch(gotNewCampus(newCampus))
 }
 
 export const deleteCampusFromDatabase = (id) => async (dispatch) => {

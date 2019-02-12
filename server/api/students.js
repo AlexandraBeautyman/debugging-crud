@@ -16,9 +16,7 @@ router.get("/:studentId", async (req, res, next) => {
   try {
     const id = req.params.studentId;
     const singleStudent = await Student.findOne({
-      where: {
-        id: id
-      },
+      where: { id: id },
       include: [{ model: Campus }]
     });
 
@@ -43,6 +41,17 @@ router.post("/", async (req, res, next) => {
       throw error;
     }
     res.json(newStudent);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete("/:studentId", async (req, res, next) => {
+  try {
+    const id = req.params.studentId;
+    const rows = await Student.destroy({ where: { id: id } });
+    if (!rows) res.json(false);
+    else res.json(true);
   } catch (err) {
     next(err);
   }

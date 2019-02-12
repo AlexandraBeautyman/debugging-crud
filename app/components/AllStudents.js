@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import CreateStudent from "./CreateStudent";
 import AddStudent from './AddStudent'
-import { fetchStudentsFromServer } from "../reducers/studentReducer";
+import { fetchStudentsFromServer, deleteStudentFromDatabase } from "../reducers/studentReducer";
 
 class AllStudents extends React.Component {
   componentDidMount() {
@@ -17,7 +17,7 @@ class AllStudents extends React.Component {
         <h1>All Students</h1>
         <div className="students">
           {students.map(student => {
-            return <CreateStudent key={student.id} view="list" student={student} />;
+            return <CreateStudent remove={this.props.deleteStudent} key={student.id} view="list" student={student} />;
           })}
         </div>
       </div>
@@ -32,6 +32,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchStudents: () => {
     dispatch(fetchStudentsFromServer());
+  },
+  deleteStudent: (id) => {
+    dispatch(deleteStudentFromDatabase(id))
   }
 });
 

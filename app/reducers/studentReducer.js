@@ -4,7 +4,7 @@ import Axios from 'axios'
 const GOT_STUDENTS_DATA = 'GOT_STUDENTS_DATA'
 const GOT_SINGLE_STUDENT = 'GOT_SINGLE_STUDENT'
 const GOT_NEW_STUDENT = 'GOT_NEW_STUDENT'
-// const DELETE_STUDENT = 'DELETE_STUDENT'
+const DELETE_STUDENT = 'DELETE_STUDENT'
 
 //Action creators
 const gotStudentsData = (studentsData) => ({
@@ -22,10 +22,11 @@ const gotNewStudent = (newStudent) => ({
     newStudent
 })
 
-// const deleteStudent = (text) => ({
-//     type: DELETE_STUDENT,
-//     text
-// })
+const deleteStudent = (result, id) => ({
+    type: DELETE_STUDENT,
+    result,
+    id
+})
 
 //Thunk creators
 export const fetchStudentsFromServer = () => async (dispatch) => {
@@ -43,10 +44,11 @@ export const postNewStudent = (newStudent) => async (dispatch) => {
     dispatch(gotNewStudent(data))
 }
 
-// export const deleteStudentFromDatabase = (id) => async (dispatch) => {
-//     const { data } = await Axios.delete(`/api/students/${id}`)
-//     dispatch(deleteStudent(data))
-// }
+export const deleteStudentFromDatabase = (id) => async (dispatch) => {
+    const {data} = await Axios.delete(`/api/students/${id}`)
+    dispatch(deleteStudent(data, id))
+}
+
 
 //sub-reducer
 const studentReducer = (state = { allStudents: [], singleStudent: {} }, action) => {
@@ -60,11 +62,14 @@ const studentReducer = (state = { allStudents: [], singleStudent: {} }, action) 
         case GOT_NEW_STUDENT: {
             return ({...state, allStudents: [...state.allStudents, action.newStudent]})
         }
-        // case DELETE_STUDENT: {
-        //     const updatedStudents = [...state.allStudents].filter( (student) => {
-        //         return (student.id === )
-        //     })
-        // }
+        case DELETE_STUDENT: {
+            if (action.result) {
+                const newArr = [...state.allStudents].filter((student) => {
+                    return (student.id !== action.id)
+                })
+                return ({...state, allStudents: newArr })
+            }
+        }
         default: return state
     }
 }
