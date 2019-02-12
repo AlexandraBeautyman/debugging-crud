@@ -13,7 +13,7 @@ class AllStudents extends React.Component {
     const students = this.props.students;
     return (
       <div className="student-container">
-        <AddStudent />
+        <div className="add-form"><h3>Add New Student</h3><AddStudent /></div>
         <h1>All Students</h1>
         <div className="students">
           {students.map(student => {
