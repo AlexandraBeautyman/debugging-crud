@@ -1,34 +1,31 @@
 import React from "react";
-import Axios from "axios";
+import { connect } from "react-redux";
+import { postNewCampus } from "../reducers/campusReducer";
 
 class AddCampus extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       name: "",
       address: ""
     };
 
-   this.handleSubmit = this.handleSubmit.bind(this)
-   this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  async handleSubmit(event) {
+  handleSubmit(event) {
     event.preventDefault();
     const body = {
       name: event.target.name.value,
       address: event.target.address.value
     };
-    await Axios.post("/api/campuses", body);
-    this.setState({
-      name: "",
-      address: ""
-    });
+    this.props.postNewCampusToServer(body);
+    this.setState({ name: "", address: "" });
   }
 
   handleChange(event) {
-      console.log("INSIDE HANDLE CHANGE: ", event.target.value)
-      this.setState({[event.target.name]: event.target.value})
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   render() {
@@ -58,4 +55,11 @@ class AddCampus extends React.Component {
   }
 }
 
-export default AddCampus;
+const mapDispatchToProps = dispatch => ({
+  postNewCampusToServer: newCampus => dispatch(postNewCampus(newCampus))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(AddCampus);
