@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import CreateCampus from "./CreateCampus";
+import AddCampus from './AddCampus'
 import { fetchCampusDataFromServer } from "../reducers/campusReducer";
 
 class AllCampuses extends React.Component {
@@ -15,6 +16,7 @@ class AllCampuses extends React.Component {
         {campuses.map(campus => {
           return <CreateCampus key={campus.id} view="list" campus={campus} />;
         })}
+        <AddCampus />
       </div>
     );
   }
