@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { postNewStudent } from "../reducers/studentReducer";
+import StudentForm from "./StudentForm";
 
 class AddStudent extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class AddStudent extends React.Component {
       email: event.target.email.value
     };
     this.props.postNewStudentToServer(body);
-    this.setState({ firstName: "", lastName: "", address: "" });
+    this.setState({ firstName: "", lastName: "", email: "" });
   }
 
   handleChange(event) {
@@ -32,36 +33,13 @@ class AddStudent extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          First Name:
-          <input
-            onChange={this.handleChange}
-            type="text"
-            name="firstName"
-            value={this.state.firstName}
-          />
-        </label>
-        <label>
-          Last Name:
-          <input
-            onChange={this.handleChange}
-            type="text"
-            name="lastName"
-            value={this.state.lastName}
-          />
-        </label>
-        <label>
-          Email:
-          <input
-            onChange={this.handleChange}
-            type="text"
-            name="email"
-            value={this.state.email}
-          />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
+      <StudentForm
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+        firstName={this.state.firstName}
+        lastName={this.state.lastName}
+        email={this.state.email}
+      />
     );
   }
 }
