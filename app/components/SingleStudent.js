@@ -5,6 +5,7 @@ import {
   clearSingleStudent
 } from "../reducers/studentReducer";
 import CreateStudent from "./CreateStudent";
+import UpdateStudent from "./UpdateStudent";
 import NotFoundComponent from "./NotFoundComponent";
 
 class SingleStudent extends React.Component {
@@ -32,7 +33,11 @@ class SingleStudent extends React.Component {
           <h1>One moment please--we getting some owls in this coop.</h1>
         )}
         {!this.state.loading && student.id && (
-          <CreateStudent view="full" student={student} />
+          <div>
+            <CreateStudent view="full" student={student} />
+            <h3>Update Student Info:</h3>
+            <UpdateStudent id={this.props.match.params.studentId} />
+          </div>
         )}
         {!this.state.loading && !student.id && <NotFoundComponent />}
       </div>

@@ -46,6 +46,25 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+router.put("/:studentId", async (req, res, next) => {
+  try {
+    const [numOfRows, updatedStudent] = await Student.update(req.body, {
+      where: { id: req.params.studentId },
+      returning: true,
+      plain: true
+    });
+    if (!updatedStudent) {
+      console.log(numOfRows);
+      const error = new Error("Something went wrong updating this student");
+      error.status = 404;
+      throw error;
+    }
+    res.send(updatedStudent);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.delete("/:studentId", async (req, res, next) => {
   try {
     const id = req.params.studentId;
