@@ -8,30 +8,48 @@ import {
 } from "../reducers/campusReducer";
 
 class AllCampuses extends React.Component {
-  componentDidMount() {
-    this.props.fetchCampuses();
+  constructor() {
+    super();
+    this.state = {
+      loading: true
+    };
+  }
+  async componentDidMount() {
+    await this.props.fetchCampuses();
+    this.setState({ loading: false });
+  }
+
+  componentWillUnmount() {
+    this.setState({ loading: true });
   }
 
   render() {
     const campuses = this.props.campuses;
     return (
       <div>
-        <div className="add-form">
-          <h3>Add New Campus:</h3>
-          <AddCampus />
-        </div>
-        <div className="campuses">
-          {campuses.map(campus => {
-            return (
-              <CreateCampus
-                key={campus.id}
-                view="list"
-                campus={campus}
-                remove={this.props.deleteCampus}
-              />
-            );
-          })}
-        </div>
+        {this.state.loading && (
+          <h1>Hold your owls, getting those campuses...</h1>
+        )}
+        {!this.state.loading && (
+          <div>
+            <div className="add-form">
+              <h3>Add New Campus:</h3>
+              <AddCampus />
+            </div>
+            <div className="campuses">
+              {campuses.map(campus => {
+                return (
+                  <CreateCampus
+                    key={campus.id}
+                    view="list"
+                    campus={campus}
+                    remove={this.props.deleteCampus}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
     );
   }

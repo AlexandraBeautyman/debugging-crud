@@ -34,7 +34,7 @@ const CampusForm = props => {
       {buttonExists ? (
         <button className="submit-button" type="submit">Submit</button>
       ) : (
-        <button className="submit-button" disabled={true} type="submit">
+        <button className="submit-button-disabled" disabled={true} type="submit">
           Submit
         </button>
       )}

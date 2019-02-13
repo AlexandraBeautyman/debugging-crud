@@ -12,6 +12,7 @@ const StudentForm = (props) => {
             type="text"
             name="firstName"
             value={firstName}
+            placeholder="First Name Required"
           />
           {
             firstName ? (<span />) : (<span className="warning">Field required</span>)
@@ -24,6 +25,7 @@ const StudentForm = (props) => {
             type="text"
             name="lastName"
             value={lastName}
+            placeholder="Last Name Required"
           />
           {
             lastName ? (<span />) : (<span className="warning">Field required</span>)
@@ -36,6 +38,7 @@ const StudentForm = (props) => {
             type="text"
             name="email"
             value={email}
+            placeholder="Email Required"
           />
           {
             email ? (<span />) : (<span className="warning">Field required</span>)
@@ -43,7 +46,7 @@ const StudentForm = (props) => {
         </label>
         {
             buttonExists ? (<button className="submit-button" type="submit">Submit</button>) :
-            (<button className="submit-button" disabled={true} type="submit">Submit</button>)
+            (<button className="submit-button-disabled" disabled={true} type="submit">Submit</button>)
         }
         
       </form>

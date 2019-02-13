@@ -5,6 +5,7 @@ const GOT_STUDENTS_DATA = 'GOT_STUDENTS_DATA'
 const GOT_SINGLE_STUDENT = 'GOT_SINGLE_STUDENT'
 const GOT_NEW_STUDENT = 'GOT_NEW_STUDENT'
 const DELETE_STUDENT = 'DELETE_STUDENT'
+const CLEAR_SINGLE_STUDENT = "CLEAR_SINGLE_STUDENT"
 
 //Action creators
 const gotStudentsData = (studentsData) => ({
@@ -15,6 +16,10 @@ const gotStudentsData = (studentsData) => ({
 const gotSingleStudent = (student) => ({
     type: GOT_SINGLE_STUDENT,
     student
+})
+
+export const clearSingleStudent = () => ({
+    type: CLEAR_SINGLE_STUDENT
 })
 
 const gotNewStudent = (newStudent) => ({
@@ -58,6 +63,9 @@ const studentReducer = (state = { allStudents: [], singleStudent: {} }, action) 
         }
         case GOT_SINGLE_STUDENT: {
             return ({...state, singleStudent: {...action.student}})
+        }
+        case CLEAR_SINGLE_STUDENT: {
+            return ({...state, singleStudent: {}})
         }
         case GOT_NEW_STUDENT: {
             return ({...state, allStudents: [...state.allStudents, action.newStudent]})

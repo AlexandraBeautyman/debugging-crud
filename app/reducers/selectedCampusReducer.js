@@ -2,6 +2,7 @@ import Axios from 'axios'
 
 //Action names
 const GOT_SINGLE_CAMPUS_DATA = 'GOT_SINGLE_CAMPUS_DATA'
+const CLEAR_SINGLE_CAMPUS = 'CLEAR_SINGLE_CAMPUS'
 
 //Action creators
 const gotSingleCampusData = (selectedCampus) => ({
@@ -9,8 +10,8 @@ const gotSingleCampusData = (selectedCampus) => ({
     selectedCampus
 })
 
-export const unmountSingleCampus = () => ({
-    type: UNMOUNT_SINGLE_CAMPUS
+export const clearSingleCampus = () => ({
+    type: CLEAR_SINGLE_CAMPUS
 })
 
 //Thunk creators
@@ -21,10 +22,15 @@ export const fetchSingleCampusDataFromServer = (id) => async (dispatch) => {
 }
 
 //Reducer
-const selectedCampusReducer = (state = {students: []}, action) => {
+const initialState = {students: []}
+
+const selectedCampusReducer = (state = initialState, action) => {
     switch (action.type) {
         case GOT_SINGLE_CAMPUS_DATA: {
             return ({...state, ...action.selectedCampus})
+        }
+        case CLEAR_SINGLE_CAMPUS: {
+            return initialState
         }
         default: return state
     }

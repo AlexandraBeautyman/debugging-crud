@@ -4,8 +4,8 @@ const db = require('./database')
 const Campus = db.define('campus', {
     name: {
         type: Sequelize.STRING,
+        allowNull: false,
         validate: {
-            allowNull: false,
             notEmpty: true
         }   
     },
@@ -15,8 +15,8 @@ const Campus = db.define('campus', {
     },
     address: {
         type: Sequelize.STRING,
+        allowNull: false,
         validate: {
-            allowNull: false,
             notEmpty: true
         }
     },
