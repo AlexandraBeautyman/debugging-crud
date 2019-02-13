@@ -3,7 +3,7 @@ import React from 'react'
 const LandingPage = () => {
 return (
     <div className="owl-container">
-    <h3>Where owls come to become wise.</h3>
+    <h1>Where owls become wise.</h1>
     </div>
 )
 }

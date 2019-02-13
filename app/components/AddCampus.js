@@ -4,8 +4,8 @@ import { postNewCampus } from "../reducers/campusReducer";
 import CampusForm from './CampusForm'
 
 class AddCampus extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       name: "",
       address: ""
@@ -15,13 +15,13 @@ class AddCampus extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault();
     const body = {
       name: event.target.name.value,
       address: event.target.address.value
     };
-    this.props.postNewCampusToServer(body);
+    await this.props.postNewCampusToServer(body);
     this.setState({ name: "", address: "" });
   }
 
