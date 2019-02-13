@@ -15,127 +15,127 @@ const seed = async () => {
 
   // seed your database here!
 
-  const griffindor = await Campus.create({
-    name: "Griffindor",
-    imageUrl: 'wmcampus.jpg',
-    address: "1223 Abingdale Road, Edinborough, Scotland",
-    description: loremHipsum()
+  const junction = await Campus.create({
+    name: "Big Bird Junction",
+    imageUrl: 'big-bird-junction.jpg',
+    address: "52 Waterfall Ave, Canyon City (Under the Big Bird)",
+    description: "Big Bird Junction is where the biggest owls go to learn Big Bird skills like flying down staircases and clerking for bird judges. Big Bird Junction is best know for the Hootenberg Law Center and the Big Bird that hovers overheard, always watching."
   })
 
-  const hufflepuff = await Campus.create({
-    name: "Hufflepuff",
-    imageUrl: 'wmcampus.jpg',
-    address: "322A Springtail Blvd, Milwaukee, USA",
-    description: loremHipsum()
+  const cave = await Campus.create({
+    name: "Cave of Forgotten Things",
+    imageUrl: 'big-flower.jpg',
+    address: "133 Flower Wall (Inside the Cave)",
+    description: "The Cave of Forgotten Things campus at Owl University is where owls go to get a taste of what it's like to be forgotten. The philosophy at OU is that owls are a bit too full of themselves and need to be taken down a peg. This campus answers the question of 'What if there were no owls?' The answer may surprise you!"
   })
 
-  const ravenclaw = await Campus.create({
-    name: "Ravenclaw",
-    imageUrl: 'wmcampus.jpg',
-    address: "555 Bird Mountain, Red Bird, USA",
-    description: loremHipsum()
+  const glimmer = await Campus.create({
+    name: "Glimmer-Glam",
+    imageUrl: 'crystal-statue.jpg',
+    address: "347B Commerce Drive, Vancouver, BC",
+    description: "Glimmer-Glam is for the fanciest owls at Owl Academy to learn how to really shine. No uggo owls, please! We only want the most beautiful and special owls to flip-flap their wings to us."
   })
 
 
-  const slytherin = await Campus.create({
-    name: "Slytherin",
-    imageUrl: 'wmcampus.jpg',
-    address: "666 Snake Pit Junction, Big Pit of Snakes, UK",
-    description: loremHipsum()
+  const vortex = await Campus.create({
+    name: "Project Vortex",
+    imageUrl: 'desert.png',
+    address: "The desert. Come alone.",
+    description: "4000 years ago all life on this planet was wiped out, except for the owls. But what came before? Were there other, non-owl lifeforms? Professor Mysterio has been working tirelessly out in his desert laboratory to try and answer this very question. Will you give a hoot and join him?"
   })
 
-  const hogsmeade = await Campus.create({
-    name: "Hogsmeade Community College",
-    imageUrl: 'wmcampus.jpg',
-    address: "420 Down the pub Rd, Hogsmeade, UK",
-    description: loremHipsum()
+  const ocean = await Campus.create({
+    name: "Lifeguarding College (for Owls)",
+    imageUrl: 'big-wave.png',
+    address: "420 Down On The Beach, Bro! Road",
+    description: "Those slothful birds at Lifeguarding College (for Owls) are at it again! Their parties are the noisiest, their grades are a joke, and somehow they always get the hottest babes! Lifeguarding College (for Owls) will surely lose OU its accreditation one of these days..."
   })
 
   await Student.create({
-    firstName: "Justin",
-    lastName: "Finch-Fletchley",
-    email: "futuremayor@goodboy.com",
-    imageUrl: "college-student.jpg",
+    firstName: "Owlbert",
+    lastName: "Flemming",
+    email: "oflemming@owloo.com",
+    imageUrl: "Barn-Owl-White.jpg",
     gpa: 3.8,
-    campusId: hufflepuff.id
+    campusId: junction.id
   })
 
   await Student.create({
-    firstName: "Hannah",
-    lastName: "Abbott",
+    firstName: "Andi",
+    lastName: "McOwl",
     email: "nothing-but-grind@risengrind.com",
-    imageUrl: "female-college-student.jpg",
+    imageUrl: "cactus-owl.jpg",
     gpa: 3.9,
-    campusId: hufflepuff.id
+    campusId: junction.id
   })
 
   await Student.create({
-    firstName: "Blaise",
-    lastName: "Zabini",
+    firstName: "Collin",
+    lastName: "Owl",
     email: "hotmomz@singlemention.com",
-    imageUrl: "college-student.jpg",
+    imageUrl: "Collared-scoops-owl.jpg",
     gpa: 3.5,
-    campusId: slytherin.id
+    campusId: cave.id
   })
 
   await Student.create({
-    firstName: "Pansy",
-    lastName: "Parkinson",
+    firstName: "Owl",
+    lastName: "Marx",
     email: "thirsty@snakeeyes.com",
-    imageUrl: "female-college-student.jpg",
+    imageUrl: "Eastern-Screech-Owl.jpg",
     gpa: 2.4,
-    campusId: slytherin.id
+    campusId: cave.id
   })
 
   await Student.create({
-    firstName: "Luna",
-    lastName: "Lovegood",
+    firstName: "Aleister",
+    lastName: "Owley",
     email: "globes@globes.com",
-    imageUrl: "female-college-student.jpg",
+    imageUrl: "scopps-owl.jpg",
     gpa: 4.0,
-    campusId: ravenclaw.id
+    campusId: glimmer.id
   })
 
   await Student.create({
-    firstName: "Parvati",
-    lastName: "Patil",
+    firstName: "Owlbus",
+    lastName: "Dumbledowl",
     email: "smartone@oneoftwo.com",
-    imageUrl: "female-college-student.jpg",
+    imageUrl: "Striped-Owl.jpg",
     gpa: 3.9,
-    campusId: ravenclaw.id
+    campusId: glimmer.id
   })
 
   await Student.create({
-    firstName: "Dean",
-    lastName: "Thomas",
+    firstName: "Dorowlthy",
+    lastName: "Sayers",
     email: "westhamfan@footballers.com",
-    imageUrl: "college-student.jpg",
+    imageUrl: "Tawny-Fish-Owl.jpg",
     gpa: 3.6,
-    campusId: griffindor.id
+    campusId: vortex.id
   })
 
   await Student.create({
-    firstName: "Ginny",
-    lastName: "Weasely",
-    email: "gingerqueen@freemail.com",
-    imageUrl: "female-college-student.jpg",
+    firstName: "Alexander",
+    lastName: "Hamiltowl",
+    email: "livefreeor@diemail.com",
+    imageUrl: "western-screech-owl.jpg",
     gpa: 3.9,
-    campusId: griffindor.id
+    campusId: vortex.id
   })
 
   await Student.create({
-    firstName: "Filch",
-    lastName: "noLastName",
+    firstName: "Robert",
+    lastName: "Dowly, Jr.",
     email: "sad@blammo.com",
-    imageUrl: "college-student.jpg",
+    imageUrl: "Great-Grey-Owl.jpg",
     gpa: 1.9
   })
 
   await Student.create({
-    firstName: "DarkLord",
-    lastName: "Voldemort",
+    firstName: "Merle",
+    lastName: "Haggowl",
     email: "reelbadguy@ska.net",
-    imageUrl: "college-student.jpg",
+    imageUrl: "silly-owl.jpg",
     gpa: 4.0
   })
 

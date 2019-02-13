@@ -14,7 +14,7 @@ const Root = () => {
         <Link to="/students">Students</Link>
       </nav>
       <main>
-        <h1>Welcome to the Margaret Hamilton Academy of JavaScript!</h1>
+        <h1>Welcome to Owl University!</h1>
         <Route exact path="/campuses" component={AllCampuses} />
         <Route exact path="/students" component={AllStudents} />
         <Route exact path="/campuses/:campusId" component={SingleCampus} />

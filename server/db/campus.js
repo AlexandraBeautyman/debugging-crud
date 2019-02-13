@@ -4,15 +4,21 @@ const db = require('./database')
 const Campus = db.define('campus', {
     name: {
         type: Sequelize.STRING,
-        allowNull: false
+        validate: {
+            allowNull: false,
+            notEmpty: true
+        }   
     },
     imageUrl: {
         type: Sequelize.STRING,
-        defaultValue: 'wmcampus.jpg'
+        defaultValue: 'canyon-ship.png'
     },
     address: {
         type: Sequelize.STRING,
-        allowNull: false
+        validate: {
+            allowNull: false,
+            notEmpty: true
+        }
     },
     description: {
         type: Sequelize.TEXT,
