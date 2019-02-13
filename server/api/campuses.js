@@ -41,16 +41,18 @@ router.get("/:campusId", async (req, res, next) => {
 
 router.put("/:campusId", async (req, res, next) => {
   try {
-    const id = req.params.campusId;
-    const [numRows, updatedCampusArr] = await Campus.update(req.body, {
-      where: { id: id }
+    const [numOfRows, updatedCampus] = await Campus.update(req.body, {
+      where: { id: req.params.campusId },
+      returning: true,
+      plain: true
     });
-    if (!numRows) {
+    if (!updatedCampus) {
+      console.log(numOfRows);
       const error = new Error("Something went wrong updating this campus");
       error.status = 404;
       throw error;
     }
-    res.status(201)
+    res.send(updatedCampus);
   } catch (err) {
     next(err);
   }

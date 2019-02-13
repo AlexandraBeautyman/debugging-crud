@@ -2,11 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import {
   fetchSingleCampusDataFromServer,
-  clearSingleCampus,
-  } from "../reducers/selectedCampusReducer";
+  clearSingleCampus
+} from "../reducers/selectedCampusReducer";
 import CreateCampus from "./CreateCampus";
 import CreateStudent from "./CreateStudent";
-import UpdateCampus from './UpdateCampus'
+import UpdateCampus from "./UpdateCampus";
 import NotFoundComponent from "./NotFoundComponent";
 
 class SingleCampus extends React.Component {
@@ -27,6 +27,7 @@ class SingleCampus extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     const campus = this.props.selectedCampus;
     const students = this.props.selectedCampus.students;
     return (
@@ -37,7 +38,7 @@ class SingleCampus extends React.Component {
         {!this.state.loading && campus.id && (
           <div>
             <CreateCampus view="full" campus={this.props.selectedCampus} />
-            <UpdateCampus id={this.props.match.params.campusId}/>
+            <UpdateCampus id={this.props.match.params.campusId} />
             <div className="student-container">
               <h1>Students</h1>
               <div className="students">
