@@ -35,7 +35,7 @@ const CreateStudent = props => {
             <h3>GPA: {student.gpa}</h3>
             <h3>
               Campus:
-              {campus.id ? (
+              {campus ? (
                 <Link to={`/campuses/${campus.id}`}>{campus.name}</Link>
               ) : (
                 <h3>Not currently attending a campus</h3>

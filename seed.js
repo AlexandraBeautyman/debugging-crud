@@ -1,14 +1,5 @@
 const {db, Campus, Student} = require('./server/db')
 const {green, red} = require('chalk')
-const hipsum = require('lorem-hipsum')
-
-const loremHipsum = () => hipsum({
-  count: 1,
-  units: 'paragraphs',
-  paragraphLowerBound: 3,
-  paragraphUpperBound: 15,
-  format: 'plain'
-})
 
 const seed = async () => {
   await db.sync({force: true})
