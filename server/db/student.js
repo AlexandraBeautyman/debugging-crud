@@ -8,6 +8,7 @@ const Student = db.define('student', {
         validate: {
             notEmpty: true
         }
+        // We could have some error here, like having notEmpty: true outside of validate. Or having it be isEmpty: false instead.
     },
     lastName: {
         type: Sequelize.STRING,

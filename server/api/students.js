@@ -45,6 +45,9 @@ router.post("/", async (req, res, next) => {
     next(err);
   }
 });
+// FAV We could fuck up async await so we're returning a promise.
+// We could have a typo in what we send back.
+// We could write req.params instead of req.body or something.
 
 router.put("/:studentId", async (req, res, next) => {
   try {
