@@ -29,10 +29,9 @@ const updateStudent = updatedStudent => ({
 });
 
 const gotNewStudent = newStudent => ({
-  type: GOT_NEW_STUDENT,
+  type: GOT_STUDENT,
   newStudent
 });
-// FAV We could have a typo in the type.
 
 const deleteStudent = (result, id) => ({
   type: DELETE_STUDENT,
@@ -52,16 +51,9 @@ export const fetchSingleStudentFromServer = id => async dispatch => {
 };
 
 export const postNewStudent = newStudent => async dispatch => {
-  const { data } = await Axios.post("/api/students", newStudent);
+  const data = await Axios.post("api/students", newStudent);
   dispatch(gotNewStudent(data));
 };
-// FAV We could fail to export this thunk creator.
-// We could use the wrong dispatch syntax.
-// We could fuck up async/await so we are getting a promise.
-// We could do the wrong type of Axios request.
-// We could send to the wrong route.
-// FAV We fail to dispatch gotNewStudent with data, or we could give it the wrong thing.
-// FAV We could forget the first slash.
 
 export const deleteStudentFromDatabase = id => async dispatch => {
   const { data } = await Axios.delete(`/api/students/${id}`);
@@ -102,7 +94,6 @@ const studentReducer = (
         ...state,
         allStudents: [...state.allStudents, action.newStudent]
       };
-      // FAV We could fail to copy the old state first.
     }
     case DELETE_STUDENT: {
       if (action.result) {

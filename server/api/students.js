@@ -34,7 +34,7 @@ router.get("/:studentId", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    const newStudent = await Student.create(req.body);
+    const newStudent = Student.create(req.body);
     if (!newStudent) {
       const error = new Error("Something went wrong creating a new student");
       error.status = 404;
@@ -45,9 +45,6 @@ router.post("/", async (req, res, next) => {
     next(err);
   }
 });
-// FAV We could fuck up async await so we're returning a promise.
-// We could have a typo in what we send back.
-// We could write req.params instead of req.body or something.
 
 router.put("/:studentId", async (req, res, next) => {
   try {
