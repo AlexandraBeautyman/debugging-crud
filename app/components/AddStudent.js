@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { postNewStudent } from "../reducers";
+import { postNewStudent } from "../reducers/studentReducer";
 import StudentForm from "./StudentForm";
 
 class AddStudent extends React.Component {
