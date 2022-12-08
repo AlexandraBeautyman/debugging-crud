@@ -19,7 +19,7 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.2",
     "chalk": "^2.4.1",
-    "express": "^4.14.0",
+    "express": "^4.17.3",
     "lorem-hipsum": "^0.1.7",
     "pg": "^7.4.3",
     "react": "^16.3.2",
